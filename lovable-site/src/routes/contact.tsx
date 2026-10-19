@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ContactPage } from "@/components/contact-page";
+export const Route=createFileRoute("/contact")({head:()=>({meta:[{title:"Kontakt & Angebotsanfrage — Euro Nexusion"},{name:"description",content:"IT-Projekt, Produktanfrage oder internationale Beschaffung: Kontaktieren Sie Euro Nexusion in Kiel."},{property:"og:title",content:"Kontakt — Euro Nexusion"},{property:"og:description",content:"Senden Sie Ihre B2B IT- und Beschaffungsanfrage."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:"/contact"}]}),component:ContactPage});

@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { AboutPage } from "@/components/content-pages";
+export const Route = createFileRoute("/about")({ head:()=>({meta:[{title:"Über Euro Nexusion — IT-Handel aus Kiel"},{name:"description",content:"Euro Nexusion verbindet IT-Kompetenz, B2B-Beschaffung und internationalen Technologiehandel aus Kiel."},{property:"og:title",content:"Über Euro Nexusion"},{property:"og:description",content:"Technologie, Beschaffung und internationaler Handel aus Kiel."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:"/about"}]}), component: AboutPage });
