@@ -12,6 +12,8 @@ jobs:
         run: |
           node --check assets/app.js
           node --check assets/scroll-journey.js
+      - name: Validate Hostinger PHP contact handler
+        run: php -l contact.php
       - name: Check required static files
         run: |
           test -f index.html
@@ -20,4 +22,6 @@ jobs:
           test -f netlify.toml
           test -f assets/style.css
           test -f assets/scroll-journey.css
+          test -f contact.php
+          test -f HOSTINGER_DEPLOY.md
           test -f sitemap.xml
