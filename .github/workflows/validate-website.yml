@@ -9,7 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validate client JavaScript
-        run: node --check assets/app.js
+        run: |
+          node --check assets/app.js
+          node --check assets/scroll-journey.js
       - name: Check required static files
         run: |
           test -f index.html
@@ -17,4 +19,5 @@ jobs:
           test -f __forms.html
           test -f netlify.toml
           test -f assets/style.css
+          test -f assets/scroll-journey.css
           test -f sitemap.xml
