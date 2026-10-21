@@ -49,7 +49,7 @@
     grid.parentElement.insertAdjacentHTML('afterbegin',`<div class="industryIntro"><span class="eyebrow">08 / SECTORS</span><h2>${copy('Technologie mit Branchenverständnis.','Technology with industry insight.')}</h2></div>`);
   }
   const brandNames=['microsoft','dell','hp','lenovo','cisco','aruba','fortinet','veeam','sophos','jabra','logitech','apc'];
-  const brandTiles=()=>vendors.map((v,i)=>`<div class="brandTile"><img src="assets/brands/${brandNames[i]}.png" alt="${v}" loading="lazy" width="160" height="80"><span>${v}</span></div>`).join('');
+  const brandTiles=()=>vendors.map((v,i)=>`<div class="brandTile"><img src="assets/brands/${brandNames[i]}.png?v=20261021m3" alt="${v}" loading="lazy" width="160" height="80"><span>${v}</span></div>`).join('');
   const vendor=document.querySelector('#vendorStrip');
   if(vendor){vendor.className='brandGrid';vendor.innerHTML=brandTiles();}
   if(current==='products') document.querySelector('main').insertAdjacentHTML('beforeend',`<section class="section soft"><div class="wrap"><div class="sectionHead"><h2>${copy('Marken für Ihr Projekt.','Brands for your project.')}</h2>${copy('Projektbezogene Auswahl. Verfügbarkeit und Partnerschaftsstatus können je Marke variieren.','Selected per project. Availability and partnership status may vary by brand.','p')}</div><div class="brandGrid">${brandTiles()}</div></div></section>`);
