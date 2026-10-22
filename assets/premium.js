@@ -53,8 +53,8 @@
     photo.className = 'companyPhoto';
     photo.appendChild(image('kiel-day', 'Kiel und die Kieler Förde'));
     const caption = document.createElement('figcaption');
-    caption.setAttribute('data-de', 'In Kiel verwurzelt. Für Unternehmen in ganz Deutschland.');
-    caption.setAttribute('data-en', 'Rooted in Kiel. For businesses across Germany.');
+    caption.setAttribute('data-de', 'Von Kiel nach Europa und in die ganze Welt.');
+    caption.setAttribute('data-en', 'From Kiel to Europe and around the world.');
     photo.appendChild(caption);
     company.appendChild(photo);
   }
