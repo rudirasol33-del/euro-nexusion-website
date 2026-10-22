@@ -10,12 +10,15 @@
   const home = document.querySelector('.hero-reference');
   if (home) {
     home.classList.add('globalHero');
-    home.innerHTML=`<div class="wrap globalHeroGrid"><div class="globalCopy"><span class="eyebrow">EURO NEXUSION / GLOBAL TECHNOLOGY</span><h1>${copy('Technologie,','Technology,')}<br>${copy('die die Welt','connecting the')}<br><em>${copy('verbindet.','world.')}</em></h1>${copy('Von Kiel in die Welt. Enterprise-IT, sichere Infrastruktur und internationale Beschaffung – für Unternehmen in ganz Deutschland.','From Kiel to the world. Enterprise IT, secure infrastructure and international sourcing — for businesses across Germany.','p')}<div class="hero-reference-actions"><a class="reference-primary" href="solutions.html">${copy('Lösungen entdecken ↗','Explore solutions ↗')}</a><a class="reference-secondary" href="trade.html">${copy('Global Trade →','Global trade →')}</a></div><div class="globalProof"><span>01 / ENTERPRISE IT</span><span>02 / SECURE NETWORKS</span><span>03 / GLOBAL SOURCING</span></div></div>${flightScene}</div>`;
+    home.innerHTML=`<div class="wrap globalHeroGrid"><div class="globalCopy"><span class="eyebrow">EURO NEXUSION / GLOBAL TECHNOLOGY</span><h1>${copy('Technologie,','Technology,')}<br>${copy('die die Welt','connecting the')}<br><em>${copy('verbindet.','world.')}</em></h1>${copy('Von Kiel nach Europa und in die ganze Welt. Enterprise-IT, sichere Infrastruktur und internationale Beschaffung – für Unternehmen in ganz Deutschland.','From Kiel to Europe and around the world. Enterprise IT, secure infrastructure and international sourcing — for businesses across Germany.','p')}<div class="hero-reference-actions"><a class="reference-primary" href="solutions.html">${copy('Lösungen entdecken ↗','Explore solutions ↗')}</a><a class="reference-secondary" href="trade.html">${copy('Global Trade →','Global trade →')}</a></div><div class="globalProof"><span>01 / ENTERPRISE IT</span><span>02 / SECURE NETWORKS</span><span>03 / GLOBAL SOURCING</span></div></div>${flightScene}</div>`;
   }
   if (current==='trade') {
     const map=document.querySelector('.tradeMap');
     if(map){map.className='tradeMap tradeFlight';map.innerHTML=flightScene;}
   }
+  const logistics=`<section class="logisticsBand"><div class="wrap"><div class="logisticsHeader"><div><span class="eyebrow">SOURCING / DELIVERY</span><h2>${copy('Technologie auf dem Weg zu Ihnen.','Technology on its way to you.')}</h2></div>${copy('Von der Beschaffung bis zur koordinierten Bereitstellung: Wir begleiten den Weg Ihrer IT-Produkte.','From sourcing to coordinated delivery: we support the journey of your IT products.','p')}</div><div class="logisticsRoad" aria-hidden="true"><div class="logisticsRoute"></div><div class="logisticsTruck"><img src="assets/images/logistics-truck.webp" alt="" loading="lazy" width="1000" height="564"></div><div class="logisticsStops"><span>${copy('Lieferung','Delivery')}</span><span>${copy('Koordination','Coordination')}</span><span>${copy('Beschaffung','Sourcing')}</span></div></div><a class="textLink" href="contact.html">${copy('Beschaffung anfragen ↗','Discuss your sourcing needs ↗')}</a></div></section>`;
+  if(home) document.querySelector('.story')?.insertAdjacentHTML('afterend',logistics);
+  if(current==='trade') document.querySelector('.tradeMap')?.insertAdjacentHTML('afterend',logistics);
   const dataBand = `<section class="dataFlowBand"><div class="wrap dataFlowGrid"><div class="dataFlowCopy"><span class="eyebrow">ONE CONNECTED ECOSYSTEM</span><h2>${copy('Alles verbunden.','Everything connected.')}<br><em>${copy('Alles im Fluss.','Always in motion.')}</em></h2>${copy('Vom Arbeitsplatz über sichere Netzwerke bis zum Rechenzentrum: Wir verbinden die Bausteine Ihrer digitalen Infrastruktur.','From the workplace through secure networks to the data center: we connect the building blocks of your digital infrastructure.','p')}<div class="flowTags"><span>WORKPLACE</span><span>SECURITY</span><span>DATA CENTER</span></div><a class="textLink" href="contact.html">${copy('Infrastruktur planen ↗','Plan your infrastructure ↗')}</a></div><div class="dataFlowVisual">${animated('data-flow','Vernetzte Infrastruktur: Workplace, Firewall, Netzwerk und Rechenzentrum')}</div></div></section>`;
   if(home){document.querySelector('.featureBand')?.insertAdjacentHTML('beforebegin',dataBand);document.querySelector('.featureBand')?.remove();}
   if(current==='solutions') document.querySelector('.pageHero')?.insertAdjacentHTML('afterend',dataBand);
@@ -30,14 +33,14 @@
     '<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M8 8V4h8v4M3 13q9 5 18 0M12 13v4"/>'
   ];
   const sectors = [
-    ['Öffentlicher Sektor','Public sector','kiel-day','Digitale Verwaltung. Verlässliche Infrastruktur.','Digital administration. Reliable infrastructure.','WORKPLACE · NETWORK'],
-    ['Banken & Finanzen','Banking & finance','secure-network','Sichere Netzwerke für sensible Geschäftsprozesse.','Secure networks for sensitive business processes.','SECURITY · RESILIENCE'],
-    ['Bildung & Forschung','Education & research','workstation','Vernetzte Lernräume und moderne Arbeitsplätze.','Connected learning spaces and modern workplaces.','DEVICES · COLLABORATION'],
-    ['Gesundheitswesen','Healthcare','data-center','Stabile IT für vernetzte Versorgung.','Dependable IT for connected care.','INFRASTRUCTURE · SECURITY'],
-    ['Industrie & Fertigung','Industry & manufacturing','server-rack','Leistungsfähige Systeme für vernetzte Produktion.','High-performance systems for connected production.','COMPUTE · CONNECTIVITY'],
-    ['Handel & Hospitality','Retail & hospitality','meeting-room','Digitale Erlebnisse und nahtlose Zusammenarbeit.','Digital experiences and seamless collaboration.','NETWORK · COLLABORATION'],
-    ['Energie & Versorgung','Energy & utilities','global-network','Vernetzung für anspruchsvolle Betriebsumgebungen.','Connectivity for demanding operational environments.','NETWORK · OPERATIONS'],
-    ['Mittelstand & Enterprise','SME & enterprise','switch','IT, die mit Ihrem Unternehmen wachsen kann.','IT designed to grow with your business.','WORKPLACE · SCALABILITY']
+    ['Öffentlicher Sektor','Public sector','sector-public-sector','Digitale Verwaltung. Verlässliche Infrastruktur.','Digital administration. Reliable infrastructure.','WORKPLACE · NETWORK'],
+    ['Banken & Finanzen','Banking & finance','sector-finance','Sichere Netzwerke für sensible Geschäftsprozesse.','Secure networks for sensitive business processes.','SECURITY · RESILIENCE'],
+    ['Bildung & Forschung','Education & research','sector-education','Vernetzte Lernräume und moderne Arbeitsplätze.','Connected learning spaces and modern workplaces.','DEVICES · COLLABORATION'],
+    ['Gesundheitswesen','Healthcare','sector-healthcare','Stabile IT für vernetzte Versorgung.','Dependable IT for connected care.','INFRASTRUCTURE · SECURITY'],
+    ['Industrie & Fertigung','Industry & manufacturing','sector-manufacturing','Leistungsfähige Systeme für vernetzte Produktion.','High-performance systems for connected production.','COMPUTE · CONNECTIVITY'],
+    ['Handel & Hospitality','Retail & hospitality','sector-retail','Digitale Erlebnisse und nahtlose Zusammenarbeit.','Digital experiences and seamless collaboration.','NETWORK · COLLABORATION'],
+    ['Energie & Versorgung','Energy & utilities','sector-energy','Vernetzung für anspruchsvolle Betriebsumgebungen.','Connectivity for demanding operational environments.','NETWORK · OPERATIONS'],
+    ['Mittelstand & Enterprise','SME & enterprise','sector-enterprise','IT, die mit Ihrem Unternehmen wachsen kann.','IT designed to grow with your business.','WORKPLACE · SCALABILITY']
   ];
   const grid=document.querySelector('#industryGrid');
   if(grid){
@@ -48,8 +51,8 @@
     grid.innerHTML=sectors.map((s,i)=>`<article class="industryCard"><div class="industryPhoto"><img src="assets/images/${s[2]}.webp" alt="" loading="lazy" width="600" height="360"><span class="industryNumber">0${i+1}</span><div class="industryIcon"><svg viewBox="0 0 24 24" aria-hidden="true">${icons[i]}</svg></div></div><div class="industryBody"><small>${s[5]}</small><h3>${copy(s[0],s[1])}</h3>${copy(s[3],s[4],'p')}<a href="contact.html">${copy('Projekt besprechen','Discuss a project')} <span aria-hidden="true">↗</span></a></div></article>`).join('');
     grid.parentElement.insertAdjacentHTML('afterbegin',`<div class="industryIntro"><span class="eyebrow">08 / SECTORS</span><h2>${copy('Technologie mit Branchenverständnis.','Technology with industry insight.')}</h2></div>`);
   }
-  const brandNames=['microsoft','dell','hp','lenovo','cisco','aruba','fortinet','veeam','sophos','jabra','logitech','apc'];
-  const brandTiles=()=>vendors.map((v,i)=>`<div class="brandTile"><img src="assets/brands/${brandNames[i]}.png?v=20261021m3" alt="${v}" loading="lazy" width="160" height="80"><span>${v}</span></div>`).join('');
+  const brandNames=['microsoft','dell','hp','lenovo','cisco','aruba','fortinet','veeam','sophos','jabra','logitech','apc','huawei','hpe','f5','tbs','utimaco'];
+  const brandTiles=()=>vendors.map((v,i)=>`<div class="brandTile"><img src="assets/brands/${brandNames[i]}.png?v=20261022r1" alt="${v}" loading="lazy" width="160" height="80"><span>${v}</span></div>`).join('');
   const vendor=document.querySelector('#vendorStrip');
   if(vendor){vendor.className='brandGrid';vendor.innerHTML=brandTiles();}
   if(current==='products') document.querySelector('main').insertAdjacentHTML('beforeend',`<section class="section soft"><div class="wrap"><div class="sectionHead"><h2>${copy('Marken für Ihr Projekt.','Brands for your project.')}</h2>${copy('Projektbezogene Auswahl. Verfügbarkeit und Partnerschaftsstatus können je Marke variieren.','Selected per project. Availability and partnership status may vary by brand.','p')}</div><div class="brandGrid">${brandTiles()}</div></div></section>`);
@@ -82,5 +85,5 @@
   control.addEventListener('click',()=>{userPaused=!userPaused;try{sessionStorage.setItem('en-motion-paused',userPaused?'1':'0');}catch{}motionState();});
   reduced.addEventListener('change',motionState);
   motionState();
-  document.documentElement.dataset.design='connected-20261021';
+  document.documentElement.dataset.design='connected-20261022';
 })();
