@@ -10,8 +10,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate client JavaScript
         run: |
-          node --check assets/app.js
-          node --check assets/scroll-journey.js
+          for file in assets/*.js scripts/*.cjs; do node --check "$file"; done
+          node scripts/check-site.cjs
       - name: Validate Hostinger PHP contact handler
         run: php -l contact.php
       - name: Check required static files

@@ -6,16 +6,51 @@
     const anchor = document.querySelector('.reference-facts');
     if (!anchor) return;
     const steps = [
-      {image:'kiel-night',de:'Von Kiel. Für ganz Deutschland.',en:'From Kiel. Across Germany.',textDe:'IT-Beschaffung für deutsche Unternehmen. Regional verwurzelt, national orientiert.',textEn:'IT sourcing for German businesses. Locally rooted and nationally focused.',alt:'Kiel bei Nacht'},
-      {image:'kiel-harbour',de:'Handel, der in Bewegung bleibt.',en:'Trade that keeps moving.',textDe:'Wir koordinieren Warenströme, Hersteller und Distribution für Ihr IT-Projekt.',textEn:'We coordinate product sourcing, manufacturers and distribution for your IT project.',alt:'Kieler Hafen'},
-      {image:'server-rack',de:'Technologie bis ins Detail.',en:'Technology. Down to the details.',textDe:'Server, Storage und leistungsstarke Hardware – abgestimmt auf Ihr Projekt.',textEn:'Servers, storage and capable hardware – selected for your project.',alt:'Enterprise Server Rack'},
-      {image:'firewall',de:'Sichere Netze. Starke Unternehmen.',en:'Secure networks. Stronger business.',textDe:'Von Netzwerk-Infrastruktur und Cybersecurity bis zur modernen Kommunikation.',textEn:'From network infrastructure and cybersecurity to modern communications.',alt:'Firewall und Cybersecurity'},
-      {image:'global-network',de:'Deutschlandweit. Weltweit vernetzt.',en:'Germany-wide. Globally connected.',textDe:'Ein Ansprechpartner für B2B-Anfragen, mit europäischer und internationaler Beschaffungsperspektive.',textEn:'One point of contact for B2B inquiries, with European and international sourcing reach.',alt:'Globales Netzwerk'}
-    ];
+  {
+    "image": "logistics-truck",
+    "de": "Beschaffung für Deutschland und Europa.",
+    "en": "Sourcing for Germany and Europe.",
+    "textDe": "Wir klären Anforderungen, Mengen und Lieferziele für Ihr B2B-Projekt.",
+    "textEn": "We clarify requirements, quantities and delivery destinations for your B2B project.",
+    "alt": "Euro Nexusion Logistik-Lkw"
+  },
+  {
+    "image": "containers",
+    "de": "Warenströme koordiniert planen.",
+    "en": "Coordinate product flows.",
+    "textDe": "Beschaffungs- und Containertransporte werden nach Projektbedarf abgestimmt.",
+    "textEn": "Sourcing and container shipments are coordinated according to project requirements.",
+    "alt": "Illustration blauer Transportcontainer"
+  },
+  {
+    "image": "flight-still",
+    "de": "Europaweit vernetzt.",
+    "en": "Connected across Europe.",
+    "textDe": "Transportweg und Liefertermin werden individuell geprüft; Luftfracht ist projektabhängig.",
+    "textEn": "Transport routes and delivery dates are checked individually; air freight depends on the project.",
+    "alt": "Euro Nexusion Flugzeug"
+  },
+  {
+    "image": "server-rack",
+    "de": "Technologie bis ins Detail.",
+    "en": "Technology. Down to the details.",
+    "textDe": "Server, Storage und leistungsstarke Hardware – abgestimmt auf Ihr Projekt.",
+    "textEn": "Servers, storage and capable hardware – selected for your project.",
+    "alt": "Enterprise Server Rack"
+  },
+  {
+    "image": "firewall",
+    "de": "Sichere Netze. Starke Unternehmen.",
+    "en": "Secure networks. Stronger business.",
+    "textDe": "Von Netzwerk-Infrastruktur und Cybersecurity bis zur modernen Kommunikation.",
+    "textEn": "From network infrastructure and cybersecurity to modern communications.",
+    "alt": "Firewall und Cybersecurity"
+  }
+];
     const section = document.createElement('section');
     section.className = 'ej-section'; section.id = 'technology-journey';
     section.setAttribute('aria-label','Euro Nexusion technology and trade journey');
-    section.innerHTML = `<div class="ej-sticky"><div class="ej-layout"><div class="ej-copy"><div class="ej-kicker">EURO NEXUSION · TECHNOLOGY IN MOTION</div><div class="ej-step-label"><span id="ej-number">01</span><span>/ 05</span></div><div class="ej-headings">${steps.map((s,i)=>`<div class="ej-caption ${i===0?'ej-caption-active':''}" aria-hidden="${i!==0}"><h2 data-de="${s.de}" data-en="${s.en}">${s.de}</h2><p data-de="${s.textDe}" data-en="${s.textEn}">${s.textDe}</p></div>`).join('')}</div><a class="ej-cta" href="contact.html" data-de="Projekt besprechen ↗" data-en="Discuss your project ↗">Projekt besprechen ↗</a><div class="ej-dots" aria-hidden="true">${steps.map((_,i)=>`<i class="${i===0?'on':''}"></i>`).join('')}</div></div><div class="ej-visual" aria-hidden="true">${steps.map((s,i)=>`<img class="ej-image ej-image-${s.image} ${i===0?'is-active':''}" src="assets/images/${s.image}.webp" alt="" loading="lazy" decoding="async">`).join('')}</div></div><div class="ej-progress-track"><div class="ej-progress-fill"></div></div></div><div class="ej-mobile"><div class="ej-mobile-head">TECHNOLOGY IN MOTION</div><div class="ej-mobile-steps">${steps.map((s,i)=>`<article><img src="assets/images/${s.image}.webp" alt="${s.alt}" loading="lazy" decoding="async"><div class="ej-mobile-copy"><span>0${i+1} / 05</span><h2 data-de="${s.de}" data-en="${s.en}">${s.de}</h2><p data-de="${s.textDe}" data-en="${s.textEn}">${s.textDe}</p></div></article>`).join('')}</div><a href="contact.html" class="ej-cta" data-de="Projekt besprechen ↗" data-en="Discuss your project ↗">Projekt besprechen ↗</a></div>`;
+    section.innerHTML = `<div class="ej-sticky"><div class="ej-layout"><div class="ej-copy"><div class="ej-kicker">EURO NEXUSION · TECHNOLOGY IN MOTION</div><div class="ej-step-label"><span id="ej-number">01</span><span>/ 05</span></div><div class="ej-headings">${steps.map((s,i)=>`<div class="ej-caption ${i===0?'ej-caption-active':''}" aria-hidden="${i!==0}"><h2 data-de="${s.de}" data-en="${s.en}">${s.de}</h2><p data-de="${s.textDe}" data-en="${s.textEn}">${s.textDe}</p></div>`).join('')}</div><a class="ej-cta" href="contact.html" data-de="Projekt besprechen ↗" data-en="Discuss your project ↗">Projekt besprechen ↗</a><div class="ej-dots" aria-hidden="true">${steps.map((_,i)=>`<i class="${i===0?'on':''}"></i>`).join('')}</div></div><div class="ej-visual" aria-hidden="true">${steps.map((s,i)=>`<img class="ej-image ej-image-${s.image} ${i===0?'is-active':''}" src="assets/images/${s.image}.${s.image==='containers'?'svg':'webp'}" alt="" loading="lazy" decoding="async">`).join('')}</div></div><div class="ej-progress-track"><div class="ej-progress-fill"></div></div></div><div class="ej-mobile"><div class="ej-mobile-head">TECHNOLOGY IN MOTION</div><div class="ej-mobile-steps">${steps.map((s,i)=>`<article><img src="assets/images/${s.image}.${s.image==='containers'?'svg':'webp'}" alt="${s.alt}" loading="lazy" decoding="async"><div class="ej-mobile-copy"><span>0${i+1} / 05</span><h2 data-de="${s.de}" data-en="${s.en}">${s.de}</h2><p data-de="${s.textDe}" data-en="${s.textEn}">${s.textDe}</p></div></article>`).join('')}</div><a href="contact.html" class="ej-cta" data-de="Projekt besprechen ↗" data-en="Discuss your project ↗">Projekt besprechen ↗</a></div>`;
     anchor.insertAdjacentElement('afterend',section);
     const captions=[...section.querySelectorAll('.ej-caption')], images=[...section.querySelectorAll('.ej-image')], dots=[...section.querySelectorAll('.ej-dots i')];
     const counter=section.querySelector('#ej-number'),fill=section.querySelector('.ej-progress-fill'),reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -33,7 +68,7 @@
       }
       fill.style.transform=`scaleX(${progress.toFixed(4)})`;
     }
-    function translateJourney(){const language=localStorage.getItem('euro-nexusion-language')||'de';section.querySelectorAll('[data-de][data-en]').forEach(el=>el.textContent=el.dataset[language]);}
+    function translateJourney(){const language=safeStorage.getItem('euro-nexusion-language')||'de';section.querySelectorAll('[data-de][data-en]').forEach(el=>el.textContent=el.dataset[language]);}
     const schedule=()=>{if(!raf)raf=requestAnimationFrame(render);};
     document.querySelector('#langBtn')?.addEventListener('click',translateJourney);
     window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});reduce.addEventListener('change',schedule);
