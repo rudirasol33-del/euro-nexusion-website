@@ -30,7 +30,7 @@
   if (feature) feature.replaceChildren(image('data-center', 'Rechenzentrum mit Server-Infrastruktur'));
   const heroPhotos = {
     solutions: 'secure-network', products: 'workstation', services: 'meeting-room',
-    trade: 'global-network', industries: 'meeting-room', company: 'kiel-day', contact: 'kiel-night'
+    trade: 'global-network', industries: 'meeting-room', company: 'data-center', contact: 'global-network'
   };
   const currentPage = document.body.dataset.page;
   const hero = document.querySelector('.pageHero');
@@ -42,19 +42,19 @@
   const map = document.querySelector('.tradeMap');
   if (map) {
     map.classList.add('tradePhoto');
-    map.replaceChildren(image('kiel-harbour', 'Kieler Hafen – Standort für internationale Beschaffung'));
+    map.replaceChildren(image('global-network', 'Technologiebeschaffung für Deutschland und Europa'));
     const caption = document.createElement('span');
-    caption.textContent = 'KIEL · GERMANY · INTERNATIONAL SOURCING';
+    caption.textContent = 'GERMANY · EUROPE · INTERNATIONAL SOURCING';
     map.appendChild(caption);
   }
   const company = document.querySelector('.companyGrid');
   if (company) {
     const photo = document.createElement('figure');
     photo.className = 'companyPhoto';
-    photo.appendChild(image('kiel-day', 'Kiel und die Kieler Förde'));
+    photo.appendChild(image('data-center', 'Vernetzte IT-Infrastruktur'));
     const caption = document.createElement('figcaption');
-    caption.setAttribute('data-de', 'Von Kiel nach Europa und in die ganze Welt.');
-    caption.setAttribute('data-en', 'From Kiel to Europe and around the world.');
+    caption.setAttribute('data-de', 'Technologie für Deutschland und Europa.');
+    caption.setAttribute('data-en', 'Technology for Germany and Europe.');
     photo.appendChild(caption);
     company.appendChild(photo);
   }

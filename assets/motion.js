@@ -6,12 +6,9 @@
   const copy = (de,en,tag='span') => `<${tag} data-de="${de}" data-en="${en}">${de}</${tag}>`;
   const animated = (name,alt,cls='') => `<img class="motionAsset ${cls}" src="assets/images/${name}-still.webp" data-motion="assets/images/${name}.webp" data-still="assets/images/${name}-still.webp" alt="${alt}" decoding="async" width="${name==='flight'?550:720}" height="${name==='flight'?367:540}">`;
   const routes = `<svg class="worldRoutes" viewBox="0 0 800 500" aria-hidden="true"><path d="M390 180 Q220 35 80 240"/><path d="M390 180 Q540 20 720 200"/><path d="M390 180 Q530 210 650 420"/><path d="M390 180 Q260 260 200 430"/><g><circle cx="390" cy="180" r="6"/><circle cx="80" cy="240" r="4"/><circle cx="720" cy="200" r="4"/><circle cx="650" cy="420" r="4"/><circle cx="200" cy="430" r="4"/></g></svg>`;
-  const flightScene = `<div class="flightScene"><div class="flightGlobe"></div>${routes}<div class="flightPlane">${animated('flight','Euro Nexusion – internationale Technologie-Beschaffung')}</div><span class="flightOrigin">KIEL · GERMANY</span><span class="flightDestination">CONNECTED WORLDWIDE</span></div>`;
+  const flightScene = `<div class="flightScene"><div class="flightGlobe"></div>${routes}<div class="flightPlane">${animated('flight','Euro Nexusion – internationale Technologie-Beschaffung')}</div><span class="flightOrigin">GERMANY · EUROPE</span><span class="flightDestination">CONNECTED WORLDWIDE</span></div>`;
   const home = document.querySelector('.hero-reference');
-  if (home) {
-    home.classList.add('globalHero');
-    home.innerHTML=`<div class="wrap globalHeroGrid"><div class="globalCopy"><span class="eyebrow">EURO NEXUSION / GLOBAL TECHNOLOGY</span><h1>${copy('Technologie,','Technology,')}<br>${copy('die die Welt','connecting the')}<br><em>${copy('verbindet.','world.')}</em></h1>${copy('Von Kiel nach Europa und in die ganze Welt. Enterprise-IT, sichere Infrastruktur und internationale Beschaffung – für Unternehmen in ganz Deutschland.','From Kiel to Europe and around the world. Enterprise IT, secure infrastructure and international sourcing — for businesses across Germany.','p')}<div class="hero-reference-actions"><a class="reference-primary" href="solutions.html">${copy('Lösungen entdecken ↗','Explore solutions ↗')}</a><a class="reference-secondary" href="trade.html">${copy('Global Trade →','Global trade →')}</a></div><div class="globalProof"><span>01 / ENTERPRISE IT</span><span>02 / SECURE NETWORKS</span><span>03 / GLOBAL SOURCING</span></div></div>${flightScene}</div>`;
-  }
+  // Preserve the distinctive navy data-center homepage hero.
   if (current==='trade') {
     const map=document.querySelector('.tradeMap');
     if(map){map.className='tradeMap tradeFlight';map.innerHTML=flightScene;}
@@ -52,10 +49,10 @@
     grid.parentElement.insertAdjacentHTML('afterbegin',`<div class="industryIntro"><span class="eyebrow">08 / SECTORS</span><h2>${copy('Technologie mit Branchenverständnis.','Technology with industry insight.')}</h2></div>`);
   }
   const brandNames=['microsoft','dell','hp','lenovo','cisco','aruba','fortinet','veeam','sophos','jabra','logitech','apc','huawei','hpe','f5','tbs','utimaco'];
-  const brandTiles=()=>vendors.map((v,i)=>`<div class="brandTile"><img src="assets/brands/${brandNames[i]}.png?v=20261022r1" alt="${v}" loading="lazy" width="160" height="80"><span>${v}</span></div>`).join('');
+  const brandTiles=()=>vendors.map(v=>'<a class="brandTile" href="brand-'+({'Dell Technologies':'dell-technologies','HPE Aruba Networking':'hpe-aruba-networking','TBS Biometrics':'tbs'}[v]||v.toLowerCase())+'.html"><strong>'+v+'</strong><span data-de="Produkte & Projektanfrage →" data-en="Products & project inquiry →">Produkte & Projektanfrage →</span></a>').join('');
   const vendor=document.querySelector('#vendorStrip');
   if(vendor){vendor.className='brandGrid';vendor.innerHTML=brandTiles();}
-  if(current==='products') document.querySelector('main').insertAdjacentHTML('beforeend',`<section class="section soft"><div class="wrap"><div class="sectionHead"><h2>${copy('Marken für Ihr Projekt.','Brands for your project.')}</h2>${copy('Projektbezogene Auswahl. Verfügbarkeit und Partnerschaftsstatus können je Marke variieren.','Selected per project. Availability and partnership status may vary by brand.','p')}</div><div class="brandGrid">${brandTiles()}</div></div></section>`);
+  if(current==='products') document.querySelector('main').insertAdjacentHTML('beforeend',`<section class="section soft"><div class="wrap"><div class="sectionHead"><h2>${copy('Marken für Ihr Projekt.','Brands for your project.')}</h2>${copy('Projektbezogene Auswahl ohne Zusage einer Partnerschaft oder Lieferfähigkeit.','Selected per project, without implying partnership or availability.','p')}</div><div class="brandGrid">${brandTiles()}</div></div></section>`);
   const overlay=document.createElement('div');overlay.className='pageTransition';overlay.setAttribute('aria-hidden','true');
   overlay.innerHTML='<div class="transitionCore"><i></i><img src="assets/images/brand-icon.webp" alt=""><span>EURO NEXUSION</span><b></b></div>';
   document.body.appendChild(overlay);
