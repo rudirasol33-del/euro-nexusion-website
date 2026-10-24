@@ -27,4 +27,6 @@ The old Netlify Forms integration remains available only on netlify.app preview 
 - Make sure the existing mail MX/SPF/DKIM/DMARC records stay intact when configuring hosting and DNS.
 
 ## Important limitations
-This project was committed to GitHub from ChatGPT. It has **not** been deployed directly to Hostinger by ChatGPT because there is no authenticated Hostinger hosting deployment connection in the current tool session. GitHub commits do not prove the Hostinger production site updated.
+On 24 October 2026, the authenticated hPanel dashboard confirmed that euro-nexusion.de is connected to this GitHub repository, branch `main`, with root directory `public_html` and automatic deployment enabled. The production response also identifies Hostinger. Preserve this existing connection; no DNS or mail changes are required for source updates.
+
+Always verify the deployed commit in hPanel and check the public pages after a release. A GitHub commit alone does not prove that production updated. Before this update, the deployed commit was `040e241bc9b719eb31e12dede04a1b6d80223688`. A recoverable source bundle was saved locally, and hPanel showed a same-day hosting backup. Use the deployment history or the hosting backup for recovery if needed; never delete or reset production files as a routine deploy step.
