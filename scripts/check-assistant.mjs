@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { siteAnswer, inquiryLink, detectLanguage, MODEL_ID } from '../assets/assistant-core.mjs';
+assert.match(siteAnswer('Liefern Sie weltweit?', 'de').text, /weltweite/);
+assert.match(siteAnswer('ما العلامات التي توفرونها؟', 'ar').text, /علامات/);
+assert.match(siteAnswer('How do I request a price?', 'en').text, /binding quotation/);
+assert.equal(siteAnswer('Explain photosynthesis', 'en'), null);
+assert.equal(detectLanguage('مرحبا', 'en'), 'ar');
+assert.match(inquiryLink([{role:'user',content:'20 Dell laptops & support'}]), /request=20%20Dell/);
+assert.equal(MODEL_ID, 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC');
+const ui=readFileSync(new URL('../assets/assistant.js',import.meta.url),'utf8');
+assert.ok(ui.indexOf('if(!consent?.ai)') < ui.indexOf('new Worker'));
+assert.ok(!ui.includes('.innerHTML = data.text'));
+const app=readFileSync(new URL('../assets/app.js',import.meta.url),'utf8');
+assert.ok(!/dermalog/i.test(app));
+assert.ok(app.includes("'assistant'].includes(page)"));
+console.log('PASS: website answers, Arabic, general-question routing, inquiry encoding, optional AI gate and removed brand.');
