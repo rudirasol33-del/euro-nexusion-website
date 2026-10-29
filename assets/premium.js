@@ -3,7 +3,7 @@
   'use strict';
   const image = (name, alt, className = '', eager = false) => {
     const img = document.createElement('img');
-    img.src = `assets/images/${name}.webp`;
+    img.src = `assets/visuals/${name}.svg`;
     img.alt = alt;
     img.className = className;
     img.loading = eager ? 'eager' : 'lazy';
@@ -37,7 +37,7 @@
   if (heroPhotos[currentPage] && hero) {
     hero.classList.add('pageHero-photo');
     // Inline CSS URLs resolve relative to the document, not this script.
-    hero.style.setProperty('--page-photo', `url("assets/images/${heroPhotos[currentPage]}.webp")`);
+    hero.style.setProperty('--page-photo', `url("assets/visuals/${heroPhotos[currentPage]}.svg")`);
   }
   const map = document.querySelector('.tradeMap');
   if (map) {
