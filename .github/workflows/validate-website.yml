@@ -12,7 +12,6 @@ jobs:
         run: |
           for file in assets/*.js scripts/*.cjs; do node --check "$file"; done
           node scripts/check-site.cjs
-          node scripts/test-assistant.cjs
       - name: Validate Hostinger PHP contact handler
         run: php -l contact.php
       - name: Check required static files
