@@ -69,15 +69,16 @@ enable.onclick = async () => {
   try { if(!await navigator.gpu.requestAdapter()){status.textContent=t().unsupported;return;} }
   catch {status.textContent=t().unsupported;return;}
   loading=true;progress=0;update();
-  loadTimer=setTimeout(()=>{stop();status.textContent=t().error;},180000);
-  worker=new Worker(new URL('./assistant-worker.js',import.meta.url),{type:'module'});
-  worker.onerror=()=>{stop();status.textContent=t().error;};
+  loadTimer=setTimeout(()=>{stop();status.textContent=t().error;},600000);
+  worker=new Worker(new URL('./assistant-worker.js?v=20261029c',import.meta.url),{type:'module'});
+  worker.onerror=event=>{stop();status.textContent=t().error+' '+(event.message||'');};
   worker.onmessage=({data})=>{
-    if(data.type==='progress'){progress=data.value;status.textContent=`${t().loading} · ${progress}%`;}
+    if(data.type==='stage'){const stages={de:{runtime:'Laufzeit wird geladen',model:'Modell wird heruntergeladen'},en:{runtime:'Downloading AI runtime',model:'Downloading model files'},ar:{runtime:'تنزيل محرك الذكاء',model:'تنزيل ملفات النموذج'}};status.textContent=(stages[language()]||stages.en)[data.stage];}
+    if(data.type==='progress'){progress=data.value;status.textContent=`${t().loading} · ${progress}% · ${data.detail||''}`;}
     if(data.type==='ready'){clearTimeout(loadTimer);ready=true;loading=false;update();}
     if(data.type==='token'&&pending){pending.textContent+=data.text;log.scrollTop=log.scrollHeight;}
     if(data.type==='done'){if(pending?.textContent)messages.push({role:'assistant',content:pending.textContent});pending=null;busy=false;send.disabled=false;status.textContent=t().ready;}
-    if(data.type==='error'){if(pending)pending.textContent=t().failed;stop();status.textContent=t().error;}
+    if(data.type==='error'){if(pending)pending.textContent=t().failed;stop();status.textContent=t().error+' '+(data.detail||'');}
   };
   worker.postMessage({type:'load'});
 };

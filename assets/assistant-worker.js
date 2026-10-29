@@ -3,10 +3,11 @@ let engine;
 self.onmessage = async ({ data }) => {
   try {
     if (data.type === 'load') {
+      self.postMessage({ type: 'stage', stage: 'runtime' });
       const { CreateMLCEngine } = await import(MODEL_RUNTIME);
-      self.postMessage({ type: 'progress', value: 1 });
+      self.postMessage({ type: 'stage', stage: 'model' });
       engine = await CreateMLCEngine(MODEL_ID, {
-        initProgressCallback: report => self.postMessage({ type: 'progress', value: Math.round(report.progress * 100) })
+        initProgressCallback: report => self.postMessage({ type: 'progress', value: Math.round(report.progress * 100), detail: report.text })
       });
       self.postMessage({ type: 'ready' });
     } else if (data.type === 'chat' && engine) {
@@ -20,6 +21,6 @@ self.onmessage = async ({ data }) => {
     }
   } catch (error) {
     console.warn('Browser AI could not complete the request:', error);
-    self.postMessage({ type: 'error' });
+    self.postMessage({ type: 'error', detail: String(error?.message || error).slice(0, 400) });
   }
 };
