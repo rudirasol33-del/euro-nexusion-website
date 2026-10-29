@@ -1,7 +1,8 @@
-import { MODEL_ID, MODEL_RUNTIME, systemPrompt } from './assistant-core.mjs';
 let engine;
 self.onmessage = async ({ data }) => {
   try {
+    if (data.type === 'load') self.postMessage({ type: 'stage', stage: 'runtime' });
+    const { MODEL_ID, MODEL_RUNTIME, systemPrompt } = await import('./assistant-core.mjs?v=20261029d');
     if (data.type === 'load') {
       self.postMessage({ type: 'stage', stage: 'runtime' });
       const { CreateMLCEngine } = await import(MODEL_RUNTIME);

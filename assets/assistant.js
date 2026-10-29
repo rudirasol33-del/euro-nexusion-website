@@ -70,7 +70,8 @@ enable.onclick = async () => {
   catch {status.textContent=t().unsupported;return;}
   loading=true;progress=0;update();
   loadTimer=setTimeout(()=>{stop();status.textContent=t().error;},600000);
-  worker=new Worker(new URL('./assistant-worker.js?v=20261029c',import.meta.url),{type:'module'});
+  try { worker=new Worker(new URL('./assistant-worker.js?v=20261029d',import.meta.url),{type:'module'}); }
+  catch(error) {stop();status.textContent=t().error+' '+String(error?.message||error);return;}
   worker.onerror=event=>{stop();status.textContent=t().error+' '+(event.message||'');};
   worker.onmessage=({data})=>{
     if(data.type==='stage'){const stages={de:{runtime:'Laufzeit wird geladen',model:'Modell wird heruntergeladen'},en:{runtime:'Downloading AI runtime',model:'Downloading model files'},ar:{runtime:'تنزيل محرك الذكاء',model:'تنزيل ملفات النموذج'}};status.textContent=(stages[language()]||stages.en)[data.stage];}
