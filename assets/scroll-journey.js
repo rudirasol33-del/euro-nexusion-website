@@ -8,8 +8,8 @@
     const steps = [
   {
     "image": "logistics-truck",
-    "de": "Beschaffung für Deutschland und Europa.",
-    "en": "Sourcing for Germany and Europe.",
+    "de": "Beschaffung. Weltweit gedacht.",
+    "en": "Sourcing with a worldwide perspective.",
     "textDe": "Wir klären Anforderungen, Mengen und Lieferziele für Ihr B2B-Projekt.",
     "textEn": "We clarify requirements, quantities and delivery destinations for your B2B project.",
     "alt": "Euro Nexusion Logistik-Lkw"
@@ -24,8 +24,8 @@
   },
   {
     "image": "flight-still",
-    "de": "Europaweit vernetzt.",
-    "en": "Connected across Europe.",
+    "de": "Deutschland. Europa. Weltweit.",
+    "en": "Germany. Europe. Worldwide.",
     "textDe": "Transportweg und Liefertermin werden individuell geprüft; Luftfracht ist projektabhängig.",
     "textEn": "Transport routes and delivery dates are checked individually; air freight depends on the project.",
     "alt": "Euro Nexusion Flugzeug"
@@ -69,6 +69,8 @@
       fill.style.transform=`scaleX(${progress.toFixed(4)})`;
     }
     function translateJourney(){const language=safeStorage.getItem('euro-nexusion-language')||'de';section.querySelectorAll('[data-de][data-en]').forEach(el=>el.textContent=el.dataset[language]);}
+    function syncPlane(){const plane=section.querySelector('.ej-image-flight-still');if(plane){const paused=document.body.classList.contains('motionPaused')||reduce.matches;const target=paused?'assets/images/flight-still.webp':'assets/images/flight.webp';if(!plane.src.endsWith(target))plane.src=target;}}
+    syncPlane();new MutationObserver(syncPlane).observe(document.body,{attributes:true,attributeFilter:['class']});reduce.addEventListener('change',syncPlane);
     const schedule=()=>{if(!raf)raf=requestAnimationFrame(render);};
     document.querySelector('#langBtn')?.addEventListener('click',translateJourney);
     window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});reduce.addEventListener('change',schedule);
