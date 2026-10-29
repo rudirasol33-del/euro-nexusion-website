@@ -13,7 +13,7 @@
 .hero-reference .reference-racks{position:absolute;inset:0 0 0 43%;display:flex;align-items:center;justify-content:space-evenly;opacity:.7;filter:drop-shadow(0 0 22px #178fff70)}
 .reference-racks i{width:17%;height:90%;border:9px solid #193f69;display:block;background:repeating-linear-gradient(to bottom,#07162e 0 17px,#174673 19px 21px,#020a18 23px 41px,#36b4ff 42px 43px,#07162d 44px 52px);box-shadow:inset 0 0 0 2px #7fb9ff55,0 0 40px #009aff32}
 .reference-racks i:nth-child(even){height:85%;opacity:.84}
-.reference-photo{position:absolute;inset:0;background:linear-gradient(90deg,#061327 0%,#08182eea 36%,#0b214568 75%,#071b36bd 100%),url('images/data-center.webp') center/cover no-repeat;z-index:1}
+.reference-photo{position:absolute;inset:0;background:linear-gradient(90deg,#061327 0%,#08182eea 36%,#0b214568 75%,#071b36bd 100%),url('visuals/data-center.svg') center/cover no-repeat;z-index:1}
 .hero-reference-wrap{position:relative;z-index:2;min-height:630px;display:flex;align-items:center;padding-top:64px;padding-bottom:64px}
 .hero-reference-copy{padding:24px 0;max-width:660px}
 .hero-kicker{font-size:.7rem;letter-spacing:.17em;font-weight:800;color:#c7e5fd}

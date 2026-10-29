@@ -1,0 +1,8 @@
+const assert=require('node:assert/strict'),fs=require('fs'),vm=require('vm'),path=require('path');
+const {answer}=require('../assets/assistant-core.js');const sandbox={window:{}};vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/assistant-knowledge.js'),'utf8'),sandbox);const kb=sandbox.window.ENKnowledge;
+assert.equal(kb.length,18);assert(!kb.some(b=>b.name==='DERMALOG'));
+for(const [q,locale,kind]of [['Was kostet ein Dell Server?','de','price'],['Shipping to Syria?','en','shipping'],['هل يوجد شحن عالمي؟','ar','shipping'],['ما هي العلامات؟','ar','brands'],['هل انتم شريك معتمد؟','ar','partner'],['Datenschutz im Chat?','de','privacy'],['I need networking switches','en','category'],['من انتم؟','ar','company']])assert.equal(answer(q,locale,kb).kind,kind,q);
+const aruba=answer('HPE Aruba Networking','de',kb);assert.equal(aruba.brand,'hpe-aruba-networking');assert(aruba.links.some(l=>l.url==='brand-hpe-aruba-networking.html'));
+const quote=answer('Need 25 Dell laptops','en',kb);const url=new URL(quote.links.at(-1).url,'https://euro-nexusion.de/');assert.equal(url.searchParams.get('brand'),'Dell Technologies');assert.equal(url.searchParams.get('request'),null);assert.equal(new URLSearchParams(url.hash.slice(1)).get('request'),'Need 25 Dell laptops');
+assert.equal(answer('und mehr Details?','de',kb,{brand:quote.brand}).brand,'dell-technologies');assert.equal(answer('unrelated gibberish zxqv','en',kb).kind,'fallback');
+assert.equal(answer('<script>alert(1)</script> price?','en',kb).kind,'price');console.log('PASS: multilingual intents, brand disambiguation, context, truthful fallback and fragment-only inquiry transfer.');
