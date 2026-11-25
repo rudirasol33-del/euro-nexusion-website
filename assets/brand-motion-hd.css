@@ -1,0 +1,27 @@
+/* Supplied identity, precise palette and directional transport; original layout retained. */
+:root{--navy:#081522;--navy2:#10253a;--blue:#2467A6;--cyan:#85C4E6;--soft:#F5F7F8;--accent:#FF681A}
+.siteHeader{background:#FFFFFF}.hero-reference,.cta{background-color:var(--navy)}
+.hero-reference h1,.cta h2{color:#FFFFFF}
+.siteHeader .navCta,.reference-primary,.cta .btn,.ej-cta{background:var(--accent);color:var(--navy);border-color:var(--accent)}
+.siteHeader .navCta:hover,.reference-primary:hover,.cta .btn:hover,.ej-cta:hover{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.textLink{color:var(--blue)}.textLink:hover{color:#b83d00}.ej-dots i.on,.ej-progress-fill{background:var(--accent)}
+.brand img,.footerBrand img{object-fit:contain;height:auto;max-width:100%}
+.logisticsRoad{container-type:inline-size;height:clamp(220px,24vw,380px)}
+.logisticsRoad .logisticsTruck{left:0;top:0;width:clamp(320px,50cqw,680px);animation:exTruckLeft 18s linear infinite;will-change:transform}
+.logisticsTruck img{width:100%;height:auto;object-fit:contain}
+.logisticsRoute{top:auto;bottom:45px}.logisticsStops{bottom:8px}
+@keyframes exTruckLeft{from{transform:translateX(100cqw)}to{transform:translateX(-100%)}}
+.flightScene{container-type:inline-size;overflow:hidden}
+.flightScene .flightPlane{left:0;top:8%;width:clamp(260px,45cqw,550px);animation:exPlaneRight 16s linear infinite;transform:none;will-change:transform}
+@keyframes exPlaneRight{from{transform:translateX(-100%)}to{transform:translateX(100cqw)}}
+.homeFlight{margin:16px 0 30px;border-radius:12px;background:var(--navy);overflow:hidden}
+.homeFlight .flightScene{aspect-ratio:auto;height:clamp(230px,24vw,360px)}
+.homeFlight .flightGlobe{opacity:.18}.homeFlight .flightOrigin,.homeFlight .flightDestination{bottom:18px;top:auto;color:var(--cyan)}
+.homeFlight .flightPlane{top:0}.flightPlane img{width:100%;height:auto;object-fit:contain}
+.motionPaused .logisticsRoad .logisticsTruck,.motionPaused .flightScene .flightPlane{animation:none!important;left:50%;transform:translateX(-50%);opacity:1}
+@media(min-width:1920px){.wrap{width:min(1480px,calc(100% - 120px))}.hero-reference-wrap{min-height:760px}.hero-reference h1{font-size:clamp(4rem,4vw,5.5rem)}.reference-photo{background-position:center}.logisticsRoad{height:380px}}
+@media(min-width:3000px){.wrap{width:min(1680px,calc(100% - 160px))}.hero-reference-wrap{min-height:900px}.hero-reference p{max-width:620px}.section,.story{padding-top:100px;padding-bottom:100px}}
+@media(max-width:680px){.logisticsRoad .logisticsTruck{width:320px;animation-duration:13s}.homeFlight .flightScene{height:230px}.flightScene .flightPlane{width:280px;animation-duration:12s}.homeFlight .flightOrigin,.homeFlight .flightDestination{font-size:.5rem}.brand img{width:155px}}
+@media(prefers-reduced-motion:reduce){.logisticsRoad .logisticsTruck,.flightScene .flightPlane{animation:none!important;left:50%;transform:translateX(-50%);opacity:1}.logisticsTruck img{animation:none!important}}
+.footerBrand img{background:#FFFFFF;border-radius:6px;padding:8px}

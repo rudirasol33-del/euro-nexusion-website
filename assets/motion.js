@@ -4,7 +4,11 @@
   const current = document.body.dataset.page;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const copy = (de,en,tag='span') => `<${tag} data-de="${de}" data-en="${en}">${de}</${tag}>`;
-  const animated = (name,alt,cls='') => `<img class="motionAsset ${cls}" src="assets/images/${name}-still.webp" data-motion="assets/images/${name}.webp" data-still="assets/images/${name}-still.webp" alt="${alt}" decoding="async" width="${name==='flight'?550:720}" height="${name==='flight'?367:540}">`;
+  const animated = (name,alt,cls='') => {
+    const still=name==='flight'?'assets/identity/ex-plane-still.webp':`assets/images/${name}-still.webp`;
+    const motion=name==='flight'?'assets/identity/ex-plane.webp':`assets/images/${name}.webp`;
+    return `<img class="motionAsset ${cls}" src="${still}" data-motion="${motion}" data-still="${still}" alt="${alt}" decoding="async" width="${name==='flight'?1152:720}" height="${name==='flight'?768:540}">`;
+  };
   const routes = `<svg class="worldRoutes" viewBox="0 0 800 500" aria-hidden="true"><path d="M390 180 Q220 35 80 240"/><path d="M390 180 Q540 20 720 200"/><path d="M390 180 Q530 210 650 420"/><path d="M390 180 Q260 260 200 430"/><g><circle cx="390" cy="180" r="6"/><circle cx="80" cy="240" r="4"/><circle cx="720" cy="200" r="4"/><circle cx="650" cy="420" r="4"/><circle cx="200" cy="430" r="4"/></g></svg>`;
   const flightScene = `<div class="flightScene"><div class="flightGlobe"></div>${routes}<div class="flightPlane">${animated('flight','Euro Nexusion – internationale Technologie-Beschaffung')}</div><span class="flightOrigin">GERMANY · EUROPE</span><span class="flightDestination">CONNECTED WORLDWIDE</span></div>`;
   const home = document.querySelector('.hero-reference');
@@ -13,7 +17,7 @@
     const map=document.querySelector('.tradeMap');
     if(map){map.className='tradeMap tradeFlight';map.innerHTML=flightScene;}
   }
-  const logistics=`<section class="logisticsBand"><div class="wrap"><div class="logisticsHeader"><div><span class="eyebrow">SOURCING / DELIVERY</span><h2>${copy('Technologie auf dem Weg zu Ihnen.','Technology on its way to you.')}</h2></div>${copy('Von der Beschaffung bis zur koordinierten Bereitstellung: Wir begleiten den Weg Ihrer IT-Produkte.','From sourcing to coordinated delivery: we support the journey of your IT products.','p')}</div><div class="logisticsRoad" aria-hidden="true"><div class="logisticsRoute"></div><div class="logisticsTruck"><img src="assets/images/logistics-truck.webp" alt="" loading="lazy" width="1000" height="564"></div><div class="logisticsStops"><span>${copy('Lieferung','Delivery')}</span><span>${copy('Koordination','Coordination')}</span><span>${copy('Beschaffung','Sourcing')}</span></div></div><a class="textLink" href="contact.html">${copy('Beschaffung anfragen ↗','Discuss your sourcing needs ↗')}</a></div></section>`;
+  const logistics=`<section class="logisticsBand"><div class="wrap"><div class="logisticsHeader"><div><span class="eyebrow">SOURCING / DELIVERY</span><h2>${copy('Technologie auf dem Weg zu Ihnen.','Technology on its way to you.')}</h2></div>${copy('Von der Beschaffung bis zur koordinierten Bereitstellung: Wir begleiten den Weg Ihrer IT-Produkte.','From sourcing to coordinated delivery: we support the journey of your IT products.','p')}</div><div class="logisticsRoad" aria-hidden="true"><div class="logisticsRoute"></div><div class="logisticsTruck"><img src="assets/identity/ex-truck.webp" alt="" loading="lazy" width="1672" height="941"></div><div class="logisticsStops"><span>${copy('Lieferung','Delivery')}</span><span>${copy('Koordination','Coordination')}</span><span>${copy('Beschaffung','Sourcing')}</span></div></div>${home?`<div class="homeFlight">${flightScene}</div>`:''}<a class="textLink" href="contact.html">${copy('Beschaffung anfragen ↗','Discuss your sourcing needs ↗')}</a></div></section>`;
   if(home) document.querySelector('.story')?.insertAdjacentHTML('afterend',logistics);
   if(current==='trade') document.querySelector('.tradeMap')?.insertAdjacentHTML('afterend',logistics);
   const dataBand = `<section class="dataFlowBand"><div class="wrap dataFlowGrid"><div class="dataFlowCopy"><span class="eyebrow">ONE CONNECTED ECOSYSTEM</span><h2>${copy('Alles verbunden.','Everything connected.')}<br><em>${copy('Alles im Fluss.','Always in motion.')}</em></h2>${copy('Vom Arbeitsplatz über sichere Netzwerke bis zum Rechenzentrum: Wir verbinden die Bausteine Ihrer digitalen Infrastruktur.','From the workplace through secure networks to the data center: we connect the building blocks of your digital infrastructure.','p')}<div class="flowTags"><span>WORKPLACE</span><span>SECURITY</span><span>DATA CENTER</span></div><a class="textLink" href="contact.html">${copy('Infrastruktur planen ↗','Plan your infrastructure ↗')}</a></div><div class="dataFlowVisual">${animated('data-flow','Vernetzte Infrastruktur: Workplace, Firewall, Netzwerk und Rechenzentrum')}</div></div></section>`;
@@ -54,7 +58,7 @@
   if(vendor){vendor.className='brandGrid';vendor.innerHTML=brandTiles();}
   if(current==='products') document.querySelector('main').insertAdjacentHTML('beforeend',`<section class="section soft"><div class="wrap"><div class="sectionHead"><h2>${copy('Marken für Ihr Projekt.','Brands for your project.')}</h2>${copy('Projektbezogene Auswahl ohne Zusage einer Partnerschaft oder Lieferfähigkeit.','Selected per project, without implying partnership or availability.','p')}</div><div class="brandGrid">${brandTiles()}</div></div></section>`);
   const overlay=document.createElement('div');overlay.className='pageTransition';overlay.setAttribute('aria-hidden','true');
-  overlay.innerHTML='<div class="transitionCore"><i></i><img src="assets/images/brand-icon.webp" alt=""><span>EURO NEXUSION</span><b></b></div>';
+  overlay.innerHTML='<div class="transitionCore"><i></i><img src="assets/identity/ex-icon.webp" alt=""><span>EURO NEXUSION</span><b></b></div>';
   document.body.appendChild(overlay);
   let navigating=false;
   document.addEventListener('click',e=>{
